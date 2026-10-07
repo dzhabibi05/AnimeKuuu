@@ -3,45 +3,27 @@ package com.pemmob.animefind
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.pemmob.animefind.ui.theme.AnimeFindTheme
+import androidx.navigation.compose.rememberNavController
+import com.pemmob.animefind.data.remote.RetrofitClient
+import com.pemmob.animefind.data.repository.AnimeRepository
+import com.pemmob.animefind.ui.navigation.AppNavGraph
+import com.pemmob.animefind.ui.theme.AnimeTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
+        val repository = AnimeRepository(RetrofitClient.instance)
+
         setContent {
-            AnimeFindTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+            AnimeTheme {
+                val navController = rememberNavController()
+                AppNavGraph(
+                    navController = navController,
+                    repository = repository
+                )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AnimeFindTheme {
-        Greeting("Android")
     }
 }

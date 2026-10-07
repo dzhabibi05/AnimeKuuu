@@ -1,9 +1,8 @@
 package com.pemmob.animefind.data.model
 
-import com.pemmob.animefind.data.model.AnimeDto
 import com.google.gson.annotations.SerializedName
 
-data class AnimeDetailResponse(
+data class GenreListResponse(
     @SerializedName("data")
-    val data: AnimeDto
+    val data: List<Genre> = emptyList()
 )

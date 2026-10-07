@@ -28,7 +28,8 @@ class AnimeRepository(
 
     suspend fun getGenres(): Result<List<Genre>> {
         return runCatching {
-            apiService.getGenres()
+            val response = apiService.getGenres()
+            response.data
         }.mapErrorToUserFriendly()
     }
 

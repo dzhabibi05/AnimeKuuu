@@ -3,6 +3,7 @@ package com.pemmob.animefind.data.remote
 import com.pemmob.animefind.data.model.AnimeDetailResponse
 import com.pemmob.animefind.data.model.AnimeListResponse
 import com.pemmob.animefind.data.model.Genre
+import com.pemmob.animefind.data.model.GenreListResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -23,5 +24,5 @@ interface AnimeApiService {
     ): AnimeDetailResponse
 
     @GET("genres/anime")
-    suspend fun getGenres(): List<Genre>
+    suspend fun getGenres(): GenreListResponse
 }

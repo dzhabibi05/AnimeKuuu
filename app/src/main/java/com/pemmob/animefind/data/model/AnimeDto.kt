@@ -1,6 +1,6 @@
 package com.pemmob.animefind.data.model
 
-import com.example.animefind.data.model.Genre
+import com.pemmob.animefind.data.model.Genre
 import com.google.gson.annotations.SerializedName
 
 data class AnimeDto(
